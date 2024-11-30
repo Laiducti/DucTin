@@ -157,7 +157,7 @@ router.get("/phone/equals", async function (req, res) {
       res.status(500).json({ status: false, message: "Lỗi server" });
     }
   });
-  // 9 Tìm khách hàng theo tên
+   // 9 Tìm khách hàng theo tên
 router.get("/search-by-name", async (req, res) => {
   try {
     const { TenKhachHang } = req.query; // Lấy tên khách hàng từ query string

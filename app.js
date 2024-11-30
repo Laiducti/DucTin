@@ -3,8 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const dotenv = require('dotenv');
-dotenv.config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -31,7 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb+srv://tinldps40352:Tin0909778460@dt.i6bnq.mongodb.net/md19302')
+// mongoose.connect('mongodb+srv://tinldps40352:Tin0909778460@dt.i6bnq.mongodb.net/md19302')
+ mongoose.connect('mongodb://localhost:27017/md19302')
+
   .then(() => console.log('>>>>>>>>>> DB Connected!!!!!!'))
   .catch(err => console.log('>>>>>>>>> DB Error: ', err));
 

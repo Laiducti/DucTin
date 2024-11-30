@@ -138,7 +138,7 @@ router.post("/login", async function(req, res){
     }
   }
     catch(e)
-    {
-      res.status(400).json({status: false, message: "Đã xảy ra lỗi"});
+      { 
+        res.status(400).json({status: false, message: "Đã xảy ra lỗi"});
     }
 });

@@ -248,25 +248,6 @@ router.post("/login", async function (req, res) {
   }
 });
 
-// đăng ký
-
-router.post("/register", async function (req, res) {
-  try {
-    const { username, password } = req.body;
-    const user = await userModel.findOne({ username: username });
-    if (user) {
-      return res.status(409).json({ status: false, message: "Tên đăng nhập đã tồn tại" });
-    }
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new userModel({ username, password: hashedPassword });
-    await newUser.save();
-    res.status(201).json({ status: true, message: "Đăng ký thành công" });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ status: false, message: "Đã xảy ra lỗi" });
-  }
-});
-
 // test lấy thông tin từ token
 
 router.get("/me", async function (req, res) {

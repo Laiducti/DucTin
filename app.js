@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var sinhvienRouter = require('./routes/sinhvien');
+var khachhang = require('./routes/khachhang');
 
 const mongoose=require('mongoose');
 require('./model/usermodel');
@@ -14,6 +15,7 @@ require('./model/category');
 require('./model/product');
 require('./model/trash');
 require('./model/sinhvien');
+require('./model/khachhang');
 
 var app = express();
 
@@ -27,13 +29,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb+srv://tinldps40352:Tin0909778460@dt.i6bnq.mongodb.net//md19302')
+mongoose.connect('mongodb://localhost:27017/md19302')
   .then(() => console.log('>>>>>>>>>> DB Connected!!!!!!'))
   .catch(err => console.log('>>>>>>>>> DB Error: ', err));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/sinhvien',sinhvienRouter);
+app.use('/khachhang',khachhang)
 
 
 // catch 404 and forward to error handler

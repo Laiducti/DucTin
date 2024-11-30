@@ -7,6 +7,8 @@ var upload=require("../ultil/uploadConfig");
 var sendMail=require("../ultil/mailConfig");
 const JWT = require('jsonwebtoken');
 const config = require("../ultil/tokenConFig");
+const dotenv = require('dotenv');
+dotenv.config();
 
 
 router.get("/all",async function(req,res)
